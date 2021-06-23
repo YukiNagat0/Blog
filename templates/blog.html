@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="text-center mb-3 mt-3 fw-light">Посты</h1>
+    <a class="btn btn-outline-primary mb-3" href="/add_post">Новый пост</a>
+    {% for post in posts %}
+        <div class="card mb-3 shadow">
+            {% if post.image_name %}
+                {% set img_url = UPLOAD_FOLDER ~ "/" ~ post.image_name %}
+
+                <img class="card-img-top" src="{{ img_url }}" alt="{{ post.image_name }}" style="width: 100%; height: 20vw; object-fit: cover">
+            {% endif %}
+
+            <div class="card-body">
+                <h4 class="card-title">{{ post.title }}</h4>
+                <p class="card-text">{{ post.text }}</p>
+                <p class="card-text text-primary mb-0 pb-0">Автор: {{ post.author }}</p>
+                <p class="card-text"><small class="text-muted">Последнее изменение: {{ post.date }}</small></p>
+            </div>
+
+            <div class="card-footer">
+                <a class="btn btn-outline-warning me-3" href="/edit_post/{{ post.id }}">Редактировать пост</a>
+                <a class="btn btn-outline-danger" href="/delete_post/{{ post.id }}">Удалить пост</a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

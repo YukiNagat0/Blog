@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="text-center mb-3 fw-light">{{ action_type }}</h1>
+    <div class="card">
+        <div class="card-body">
+            <form action="" method="post" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <div class="mb-2">
+                    {{ form.title.label(class="form-label", for="titleValid") }}
+                    {{ form.title(class="form-control", id="titleValid") }}
+{#                    {% if form.title.errors %}#}
+{#                        {{ form.title(class="form-control is-invalid", id="titleInvalid") }}#}
+{#                        {{ form.title.label(for="titleInvalid", text="Заголовок (Поле должно быть заполнено!)") }}#}
+{#                    {% else %}#}
+{#                        {{ form.title(class="form-control", id="titleValid") }}#}
+{#                        {{ form.title.label(for="titleValid") }}#}
+{#                    {% endif %}#}
+                </div>
+
+                <div class="mb-2">
+                    {{ form.text.label(class="form-label", for="textValid") }}
+                    {{ form.text(class="form-control", id="textValid", style="height: 100px;") }}
+{#                    {% if form.text.errors %}#}
+{#                        {{ form.text(class="form-control is-invalid", id="textInvalid", style="height: 100px;") }}#}
+{#                        {{ form.text.label(for="textInvalid", text="Текст (Поле должно быть заполнено!)") }}#}
+{#                    {% else %}#}
+{#                        {{ form.text(class="form-control", id="textValid", style="height: 100px;") }}#}
+{#                        {{ form.text.label(for="textValid") }}#}
+{#                    {% endif %}#}
+                </div>
+
+                <div class="mb-1">
+                    {{ form.author.label(class="form-label", for="authorValid") }}
+                    {{ form.author(class="form-control", for="authorValid") }}
+{#                    {% if form.author.errors %}#}
+{#                        {{ form.author(class="form-control is-invalid", id="authorInvalid") }}#}
+{#                        {{ form.author.label(for="authorInvalid", text="Автор (Поле должно быть заполнено!)") }}#}
+{#                    {% else %}#}
+{#                        {{ form.author(class="form-control", id="authorValid") }}#}
+{#                        {{ form.author.label(for="authorValid") }}#}
+{#                    {% endif %}#}
+                </div>
+
+                <div class="mb-3">
+                    {{ form.image.label(class="form-label", for="fileValid") }}
+                    {{ form.image(class="form-control", id="fileValid", accept="image/*") }}
+                </div>
+
+                {{ form.submit(class="btn btn-outline-primary", type="submit", value=submit_text) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}
